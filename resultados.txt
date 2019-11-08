@@ -1,0 +1,184 @@
+delegado 19: recibio-HOLA-continuando.
+delegado 15: recibio-HOLA-continuando.
+delegado 8: recibio-HOLA-continuando.
+delegado 16: recibio-HOLA-continuando.
+delegado 2: recibio-HOLA-continuando.
+delegado 22: recibio-HOLA-continuando.
+delegado 19: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 4: recibio-HOLA-continuando.
+delegado 17: recibio-HOLA-continuando.
+delegado 10: recibio-HOLA-continuando.
+delegado 13: recibio-HOLA-continuando.
+delegado 21: recibio-HOLA-continuando.
+delegado 1: recibio-HOLA-continuando.
+delegado 6: recibio-HOLA-continuando.
+delegado 11: recibio-HOLA-continuando.
+delegado 5: recibio-HOLA-continuando.
+delegado 3: recibio-HOLA-continuando.
+delegado 14: recibio-HOLA-continuando.
+delegado 20: recibio-HOLA-continuando.
+delegado 18: recibio-HOLA-continuando.
+delegado 12: recibio-HOLA-continuando.
+delegado 9: recibio-HOLA-continuando.
+delegado 7: recibio-HOLA-continuando.
+delegado 0: recibio-HOLA-continuando.
+delegado 12: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 3: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 0: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 15: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 18: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 6: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 14: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 5: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 13: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 10: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 1: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 8: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 20: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 7: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 11: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 21: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 22: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 9: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 16: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 2: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 4: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 19: envio certificado del servidor. continuando.
+delegado 17: recibio-ALGORITMOS:AES:RSA:HMACSHA512-continuando.
+delegado 3: envio certificado del servidor. continuando.
+delegado 0: envio certificado del servidor. continuando.
+delegado 12: envio certificado del servidor. continuando.
+delegado 20: envio certificado del servidor. continuando.
+delegado 18: envio certificado del servidor. continuando.
+delegado 1: envio certificado del servidor. continuando.
+delegado 16: envio certificado del servidor. continuando.
+delegado 10: envio certificado del servidor. continuando.
+delegado 4: envio certificado del servidor. continuando.
+delegado 22: envio certificado del servidor. continuando.
+delegado 8: envio certificado del servidor. continuando.
+delegado 11: envio certificado del servidor. continuando.
+delegado 19: recibio y creo llave simetrica. continuando.
+delegado 15: envio certificado del servidor. continuando.
+delegado 17: envio certificado del servidor. continuando.
+delegado 7: envio certificado del servidor. continuando.
+delegado 2: envio certificado del servidor. continuando.
+delegado 9: envio certificado del servidor. continuando.
+delegado 21: envio certificado del servidor. continuando.
+delegado 12: recibio y creo llave simetrica. continuando.
+delegado 3: recibio y creo llave simetrica. continuando.
+delegado 1: recibio y creo llave simetrica. continuando.
+delegado 14: envio certificado del servidor. continuando.
+delegado 5: envio certificado del servidor. continuando.
+delegado 19: recibio confirmacion del cliente:OK-continuado.
+delegado 20: recibio y creo llave simetrica. continuando.
+delegado 6: envio certificado del servidor. continuando.
+delegado 22: recibio y creo llave simetrica. continuando.
+delegado 4: recibio y creo llave simetrica. continuando.
+delegado 10: recibio y creo llave simetrica. continuando.
+delegado 15: recibio y creo llave simetrica. continuando.
+delegado 16: recibio y creo llave simetrica. continuando.
+delegado 18: recibio y creo llave simetrica. continuando.
+delegado 7: recibio y creo llave simetrica. continuando.
+delegado 9: recibio y creo llave simetrica. continuando.
+delegado 21: recibio y creo llave simetrica. continuando.
+delegado 2: recibio y creo llave simetrica. continuando.
+delegado 17: recibio y creo llave simetrica. continuando.
+delegado 8: recibio y creo llave simetrica. continuando.
+delegado 11: recibio y creo llave simetrica. continuando.
+delegado 13: envio certificado del servidor. continuando.
+delegado 0: recibio y creo llave simetrica. continuando.
+delegado 12: recibio confirmacion del cliente:OK-continuado.
+delegado 12: recibio cc y clave - continuando
+delegado 3: recibio confirmacion del cliente:OK-continuado.
+delegado 4: recibio confirmacion del cliente:OK-continuado.
+delegado 14: recibio y creo llave simetrica. continuando.
+delegado 1: recibio confirmacion del cliente:OK-continuado.
+delegado 0: recibio confirmacion del cliente:OK-continuado.
+delegado 1: recibio cc y clave - continuando
+delegado 2: recibio confirmacion del cliente:OK-continuado.
+delegado 3: recibio cc y clave - continuando
+delegado 12: envio valor 98943200 cifrado con llave simetrica al cliente. continuado.
+delegado 22: recibio confirmacion del cliente:OK-continuado.
+delegado 20: recibio confirmacion del cliente:OK-continuado.
+delegado 11: recibio confirmacion del cliente:OK-continuado.
+delegado 13: recibio y creo llave simetrica. continuando.
+delegado 15: recibio confirmacion del cliente:OK-continuado.
+delegado 9: recibio confirmacion del cliente:OK-continuado.
+delegado 1: envio valor 60996800 cifrado con llave simetrica al cliente. continuado.
+delegado 14: recibio confirmacion del cliente:OK-continuado.
+delegado 17: recibio confirmacion del cliente:OK-continuado.
+delegado 16: recibio confirmacion del cliente:OK-continuado.
+delegado 10: recibio confirmacion del cliente:OK-continuado.
+delegado 7: recibio confirmacion del cliente:OK-continuado.
+delegado 18: recibio confirmacion del cliente:OK-continuado.
+delegado 6: recibio y creo llave simetrica. continuando.
+delegado 0: recibio cc y clave - continuando
+delegado 19: recibio cc y clave - continuando
+delegado 5: recibio y creo llave simetrica. continuando.
+delegado 8: recibio confirmacion del cliente:OK-continuado.
+delegado 4: recibio cc y clave - continuando
+delegado 21: recibio confirmacion del cliente:OK-continuado.
+delegado 2: recibio cc y clave - continuando
+delegado 12: Terminando exitosamente.OK
+delegado 16: recibio cc y clave - continuando
+delegado 3: envio valor 96284500 cifrado con llave simetrica al cliente. continuado.
+delegado 0: envio valor 18721100 cifrado con llave simetrica al cliente. continuado.
+delegado 15: recibio cc y clave - continuando
+delegado 20: recibio cc y clave - continuando
+delegado 13: recibio confirmacion del cliente:OK-continuado.
+delegado 1: Terminando exitosamente.OK
+delegado 18: recibio cc y clave - continuando
+delegado 9: recibio cc y clave - continuando
+delegado 10: recibio cc y clave - continuando
+delegado 11: recibio cc y clave - continuando
+delegado 2: envio valor 50050300 cifrado con llave simetrica al cliente. continuado.
+delegado 17: recibio cc y clave - continuando
+delegado 5: recibio confirmacion del cliente:OK-continuado.
+delegado 14: recibio cc y clave - continuando
+delegado 8: recibio cc y clave - continuando
+delegado 7: recibio cc y clave - continuando
+delegado 4: envio valor 36389900 cifrado con llave simetrica al cliente. continuado.
+delegado 19: envio valor 16120700 cifrado con llave simetrica al cliente. continuado.
+delegado 6: recibio confirmacion del cliente:OK-continuado.
+delegado 22: recibio cc y clave - continuando
+delegado 21: recibio cc y clave - continuando
+delegado 5: recibio cc y clave - continuando
+delegado 13: recibio cc y clave - continuando
+delegado 19: Terminando exitosamente.OK
+delegado 10: envio valor 54261900 cifrado con llave simetrica al cliente. continuado.
+delegado 9: envio valor 64709300 cifrado con llave simetrica al cliente. continuado.
+delegado 2: Terminando exitosamente.OK
+delegado 4: Terminando exitosamente.OK
+delegado 6: recibio cc y clave - continuando
+delegado 20: envio valor 51337600 cifrado con llave simetrica al cliente. continuado.
+delegado 22: envio valor 56299700 cifrado con llave simetrica al cliente. continuado.
+delegado 14: envio valor 13427000 cifrado con llave simetrica al cliente. continuado.
+delegado 8: envio valor 71099600 cifrado con llave simetrica al cliente. continuado.
+delegado 15: envio valor 35346100 cifrado con llave simetrica al cliente. continuado.
+delegado 16: envio valor 86680100 cifrado con llave simetrica al cliente. continuado.
+delegado 0: Terminando exitosamente.OK
+delegado 3: Terminando exitosamente.OK
+delegado 18: envio valor 89508800 cifrado con llave simetrica al cliente. continuado.
+delegado 7: envio valor 94899500 cifrado con llave simetrica al cliente. continuado.
+delegado 11: envio valor 88535900 cifrado con llave simetrica al cliente. continuado.
+delegado 17: envio valor 46387600 cifrado con llave simetrica al cliente. continuado.
+delegado 21: envio valor 24165200 cifrado con llave simetrica al cliente. continuado.
+delegado 13: envio valor 47846800 cifrado con llave simetrica al cliente. continuado.
+delegado 13: Terminando exitosamente.OK
+delegado 20: Terminando exitosamente.OK
+delegado 5: envio valor 44667300 cifrado con llave simetrica al cliente. continuado.
+delegado 22: Terminando exitosamente.OK
+delegado 9: Terminando exitosamente.OK
+delegado 10: Terminando exitosamente.OK
+delegado 14: Terminando exitosamente.OK
+delegado 17: Terminando exitosamente.OK
+delegado 21: Terminando exitosamente.OK
+delegado 11: Terminando exitosamente.OK
+delegado 6: envio valor 43527900 cifrado con llave simetrica al cliente. continuado.
+delegado 18: Terminando exitosamente.OK
+delegado 8: Terminando exitosamente.OK
+delegado 16: Terminando exitosamente.OK
+delegado 15: Terminando exitosamente.OK
+delegado 7: Terminando exitosamente.OK
+delegado 5: Terminando exitosamente.OK
+delegado 6: Terminando exitosamente.OK
