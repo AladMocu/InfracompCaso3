@@ -10,13 +10,19 @@ import java.net.Socket;
 import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+/**
+ * Clase principal que detecta las conexiones y crea los threads
+ */
 public class P {
 	private static ServerSocket ss;	
 	private static final String MAESTRO = "MAESTRO: ";
 	private static X509Certificate certSer; /* acceso default */
 	private static KeyPair keyPairServidor; /* acceso default */
-	
+
+
 	/**
 	 * @param args
 	 */
@@ -27,7 +33,9 @@ public class P {
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
 		int ip = Integer.parseInt(br.readLine());
-		System.out.println(MAESTRO + "Empezando servidor maestro en puerto " + ip);
+		System.out.println(MAESTRO + "Establezca tamaño de pool de threads:");
+		int poolsize=Integer.parseInt(br.readLine());
+		System.out.println(MAESTRO + "Empezando servidor maestro en puerto " + ip + " con un buffersize de "+poolsize);
 		// Adiciona la libreria como un proveedor de seguridad.
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());		
 
@@ -49,13 +57,16 @@ public class P {
 		// Crea el socket que escucha en el puerto seleccionado.
 		ss = new ServerSocket(ip);
 		System.out.println(MAESTRO + "Socket creado.");
-        
+
+		ExecutorService executorService = Executors.newFixedThreadPool(poolsize);
+
+
 		for (int i=0;true;i++) {
 			try { 
 				Socket sc = ss.accept();
 				System.out.println(MAESTRO + "cliente.Cliente " + i + " aceptado.");
 				D d = new D(sc,i);
-				d.start();
+				executorService.execute(d);
 			} catch (IOException e) {
 				System.out.println(MAESTRO + "Error creando el socket cliente.");
 				e.printStackTrace();

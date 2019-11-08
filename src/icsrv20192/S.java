@@ -30,6 +30,9 @@ import org.bouncycastle.operator.ContentSigner;
 import org.bouncycastle.operator.OperatorCreationException;
 import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder;
 
+/**
+ * Esta clase se encarga del cifrado
+ */
 public class S {
 	public static final String DES = "DES";
 	public static final String AES = "AES";

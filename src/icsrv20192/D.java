@@ -14,6 +14,9 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 
+/**
+ * Esta clase se encarga del protocolo
+ */
 public class D extends Thread {
 
 	public static final String OK = "OK";
@@ -85,7 +88,7 @@ public class D extends Thread {
 		cadenas = new String[numCadenas];
 		
 		String linea;
-	    System.out.println(dlg + "Empezando atencion.");
+		System.out.print(dlg + "Empezando atencion.");
 	        try {
 
 				PrintWriter ac = new PrintWriter(sc.getOutputStream() , true);
@@ -100,8 +103,8 @@ public class D extends Thread {
 					throw new Exception(dlg + ERROR + REC + linea +"-terminando.");
 				} else {
 					ac.println(OK);
-					cadenas[0] = dlg + REC + linea + "-continuando.";
-					System.out.println(cadenas[0]);
+					cadenas[0] = REC + linea + "- ::: .";
+					System.out.print(cadenas[0]);
 				}
 				
 				/***** Fase 2:  *****/
@@ -130,15 +133,15 @@ public class D extends Thread {
 					sc.close();
 					throw new Exception(dlg + ERROR + "AlgHash." + REC + algoritmos + "-terminando.");
 				}
-				cadenas[1] = dlg + REC + linea + "-continuando.";
-				System.out.println(cadenas[1]);
+				cadenas[1] = REC + linea + "- ::: .";
+				System.out.print(cadenas[1]);
 				ac.println(OK);
 				
 				/***** Fase 3:  *****/
 				String testCert = toHexString(mybyte);
 				ac.println(testCert);
-				cadenas[2] = dlg + "envio certificado del servidor. continuando.";
-				System.out.println(cadenas[2] + testCert);				
+				cadenas[2] ="envio certificado del servidor  ::: ";
+				System.out.print(cadenas[2] + testCert);
 
 				/***** Fase 4: *****/
 				cadenas[3] = "";
@@ -147,22 +150,22 @@ public class D extends Thread {
 						toByteArray(linea), 
 						keyPairServidor.getPrivate(), algoritmos[2] );
 				SecretKey simetrica = new SecretKeySpec(llaveSimetrica, 0, llaveSimetrica.length, algoritmos[1]);
-				cadenas[3] = dlg + "recibio y creo llave simetrica. continuando.";
-				System.out.println(cadenas[3]);
+				cadenas[3] = "recibio y creo llave simetrica  ::: ";
+				System.out.print(cadenas[3]);
 				
 				/***** Fase 5:  *****/
 				cadenas[4]="";
 				linea = dc.readLine();
-				System.out.println(dlg + "Recibio reto del cliente:-" + linea + "-");
+				System.out.print("" + "Recibio reto del cliente:-" + linea + "-");
 				byte[] retoByte = toByteArray(linea);
 				byte [ ] ciphertext1 = S.se(retoByte, simetrica, algoritmos[1]);
 				ac.println(toHexString(ciphertext1));
-				System.out.println(dlg + "envio reto cifrado con llave simetrica al cliente. continuado.");
+				System.out.print("" + "envio reto cifrado con llave simetrica al cliente.  ::: .");
 
 				linea = dc.readLine();
 				if ((linea.equals(OK))) {
-					cadenas[4] = dlg + "recibio confirmacion del cliente:"+ linea +"-continuado.";
-					System.out.println(cadenas[4]);
+					cadenas[4] = "recibio confirmacion del cliente:"+ linea +"- ::: .";
+					System.out.print(cadenas[4]);
 				} else {
 					sc.close();
 					throw new Exception(dlg + ERROR + "en confirmacion de llave simetrica." + REC + "-terminando.");
@@ -173,14 +176,14 @@ public class D extends Thread {
 				byte[] ccByte = S.sd(
 						toByteArray(linea), simetrica, algoritmos[1]);
 				String cc = toHexString(ccByte);
-				System.out.println(dlg + "recibio cc y descifro:-" + cc + "-continuado.");
+				System.out.print("" + "recibio cc y descifro:-" + cc + "- ::: .");
 				
 				linea = dc.readLine();				
 				byte[] claveByte = S.sd(
 						toByteArray(linea), simetrica, algoritmos[1]);
 				String clave = toHexString(claveByte);
-				System.out.println(dlg + "recibio clave y descifro:-" + clave + "-continuado.");
-				cadenas[5] = dlg + "recibio cc y clave - continuando";
+				System.out.print("" + "recibio clave y descifro:-" + clave + "- ::: .");
+				cadenas[5] = dlg + "recibio cc y clave -  ::: ";
 				
 				Random rand = new Random(); 
 				int valor = rand.nextInt(1000000);
@@ -189,21 +192,21 @@ public class D extends Thread {
 				byte[] valorByte = toByteArray(strvalor);
 				byte [ ] ciphertext2 = S.se(valorByte, simetrica, algoritmos[1]);
 				ac.println(toHexString(ciphertext2));
-				cadenas[6] = dlg + "envio valor "+strvalor+" cifrado con llave simetrica al cliente. continuado.";
-				System.out.println(cadenas[6]);
+				cadenas[6] = "envio valor "+strvalor+" cifrado con llave simetrica al cliente.  ::: .";
+				System.out.print(cadenas[6]);
 		        
 				byte [] hmac = S.hdg(valorByte, simetrica, algoritmos[3]);
 				byte[] recibo = S.ae(hmac, keyPairServidor.getPrivate(), algoritmos[2]);
 				ac.println(toHexString(recibo));
-				System.out.println(dlg + "envio hmac cifrado con llave privada del servidor. continuado.");
+				System.out.print("" + "envio hmac cifrado con llave privada del servidor.  ::: .");
 				
 				cadenas[7] = "";
 				linea = dc.readLine();	
 				if (linea.equals(OK)) {
-					cadenas[7] = dlg + "Terminando exitosamente." + linea;
+					cadenas[7] = "Terminando exitosamente." + linea;
 					System.out.println(cadenas[7]);
 				} else {
-					cadenas[7] = dlg + "Terminando con error" + linea;
+					cadenas[7] = "Terminando con error" + linea;
 			        System.out.println(cadenas[7]);
 				}
 		        sc.close();
