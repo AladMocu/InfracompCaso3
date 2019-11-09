@@ -1,4 +1,4 @@
-package cliente;
+package secure.cliente;
 
 import java.io.*;
 import java.net.Socket;

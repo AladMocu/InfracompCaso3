@@ -1,9 +1,14 @@
-package cliente;
+package insecure.cliente;
 
-import javax.crypto.*;
+import javax.crypto.Cipher;
+import javax.crypto.Mac;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 import java.security.SecureRandom;
@@ -91,7 +96,7 @@ public class Cliente extends Thread{
             InputStream in = new ByteArrayInputStream(certificate);
             certificado = (X509Certificate) CertificateFactory.getInstance("X.509").generateCertificate(in);
             KW = certificado.getPublicKey();
-            //cifrar llave publica del cliente con la publica del servidor
+            //cifrar llave publica del secure.cliente con la publica del servidor
             cipherRSA.init(Cipher.ENCRYPT_MODE,KW);
             byte[] encryptedData = cipherRSA.doFinal(KS.getEncoded());
             writer.println(toHexString(encryptedData));

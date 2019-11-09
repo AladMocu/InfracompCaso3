@@ -1,4 +1,4 @@
-package icsrv20192;
+package secure.icsrv20192;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -71,7 +71,7 @@ public class P {
 		for (int i=0;true;i++) {
 			try { 
 				Socket sc = ss.accept();
-				System.out.println(MAESTRO + "cliente.Cliente " + i + " aceptado.");
+				System.out.println(MAESTRO + "secure.cliente.Cliente " + i + " aceptado.");
 				D d = new D(sc,i);
                 Future<ArrayList<Double>> submit = executorService.submit((Callable<ArrayList<Double>>) d);
 
@@ -80,7 +80,7 @@ public class P {
 
                 System.out.println(data.toString());
             } catch (IOException e) {
-				System.out.println(MAESTRO + "Error creando el socket cliente.");
+				System.out.println(MAESTRO + "Error creando el socket secure.cliente.");
 				e.printStackTrace();
 			}
 		}

@@ -1,19 +1,4 @@
-package icsrv20192;
-
-import java.awt.geom.Arc2D;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.lang.management.ManagementFactory;
-import java.lang.reflect.Array;
-import java.net.Socket;
-import java.security.KeyPair;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.concurrent.Callable;
+package insecure.icsrv20192;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -22,6 +7,14 @@ import javax.management.AttributeList;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
 import javax.xml.bind.DatatypeConverter;
+import java.io.*;
+import java.lang.management.ManagementFactory;
+import java.net.Socket;
+import java.security.KeyPair;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.Callable;
 
 /**
  * Esta clase se encarga del protocolo
@@ -71,7 +64,7 @@ public class D implements Callable<ArrayList<Double>> {
 	}
 	
 	private boolean validoAlgHMAC(String nombre) {
-		return ((nombre.equals(S.HMACMD5) || 
+		return ((nombre.equals(S.HMACMD5) ||
 			 nombre.equals(S.HMACSHA1) ||
 			 nombre.equals(S.HMACSHA256) ||
 			 nombre.equals(S.HMACSHA384) ||
@@ -196,15 +189,15 @@ public class D implements Callable<ArrayList<Double>> {
 			/***** Fase 5:  *****/
 			cadenas[4]="";
 			linea = dc.readLine();
-			System.out.print("" + "Recibio reto del cliente:-" + linea + "-");
+			System.out.print("" + "Recibio reto del secure.cliente:-" + linea + "-");
 			byte[] retoByte = toByteArray(linea);
 			byte [ ] ciphertext1 = S.se(retoByte, simetrica, algoritmos[1]);
 			ac.println(toHexString(ciphertext1));
-			System.out.print("" + "envio reto cifrado con llave simetrica al cliente.  ::: .");
+			System.out.print("" + "envio reto cifrado con llave simetrica al secure.cliente.  ::: .");
 
 			linea = dc.readLine();
 			if ((linea.equals(OK))) {
-				cadenas[4] = "recibio confirmacion del cliente:"+ linea +"- ::: .";
+				cadenas[4] = "recibio confirmacion del secure.cliente:"+ linea +"- ::: .";
 				System.out.print(cadenas[4]);
 			} else {
 				sc.close();
@@ -232,7 +225,7 @@ public class D implements Callable<ArrayList<Double>> {
 			byte[] valorByte = toByteArray(strvalor);
 			byte [ ] ciphertext2 = S.se(valorByte, simetrica, algoritmos[1]);
 			ac.println(toHexString(ciphertext2));
-			cadenas[6] = "envio valor "+strvalor+" cifrado con llave simetrica al cliente.  ::: .";
+			cadenas[6] = "envio valor "+strvalor+" cifrado con llave simetrica al secure.cliente.  ::: .";
 			System.out.print(cadenas[6]);
 
 			byte [] hmac = S.hdg(valorByte, simetrica, algoritmos[3]);
