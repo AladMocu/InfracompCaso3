@@ -10,8 +10,11 @@ import java.net.Socket;
 import java.security.KeyPair;
 import java.security.Security;
 import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
  * Clase principal que detecta las conexiones y crea los threads
@@ -22,6 +25,9 @@ public class P {
 	private static X509Certificate certSer; /* acceso default */
 	private static KeyPair keyPairServidor; /* acceso default */
 
+
+
+    //atributos analisis
 
 	/**
 	 * @param args
@@ -61,13 +67,19 @@ public class P {
 		ExecutorService executorService = Executors.newFixedThreadPool(poolsize);
 
 
+
 		for (int i=0;true;i++) {
 			try { 
 				Socket sc = ss.accept();
 				System.out.println(MAESTRO + "cliente.Cliente " + i + " aceptado.");
 				D d = new D(sc,i);
-				executorService.execute(d);
-			} catch (IOException e) {
+                Future<ArrayList<Double>> submit = executorService.submit((Callable<ArrayList<Double>>) d);
+
+                //data representa un arreglo de valores relatimos a la ejecucion de la forma [tiempo,cpu,(0/1)falla]
+                ArrayList<Double> data=submit.get();
+
+                System.out.println(data.toString());
+            } catch (IOException e) {
 				System.out.println(MAESTRO + "Error creando el socket cliente.");
 				e.printStackTrace();
 			}

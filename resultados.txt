@@ -1,8 +1,1 @@
-recibio-HOLA- ::: .
-recibio-ALGORITMOS:AES:RSA:HMACSHA512- ::: .
-envio certificado del servidor  ::: 
-recibio y creo llave simetrica  ::: 
-recibio confirmacion del cliente:OK- ::: .
-delegado 0: recibio cc y clave -  ::: 
-envio valor 95340700 cifrado con llave simetrica al cliente.  ::: .
-Terminando exitosamente.OK
+recibio-HOLA- ::: .recibio-ALGORITMOS:AES:RSA:HMACSHA512- ::: .envio certificado del servidor  ::: recibio y creo llave simetrica  ::: recibio confirmacion del cliente:OK- ::: .delegado 0: recibio cc y clave -  ::: envio valor 54475600 cifrado con llave simetrica al cliente.  ::: .Terminando exitosamente.OKrecibio-HOLA- ::: .recibio-ALGORITMOS:AES:RSA:HMACSHA512- ::: .envio certificado del servidor  ::: recibio y creo llave simetrica  ::: recibio confirmacion del cliente:OK- ::: .delegado 1: recibio cc y clave -  ::: envio valor 80340300 cifrado con llave simetrica al cliente.  ::: .Terminando exitosamente.OKrecibio-HOLA- ::: .recibio-ALGORITMOS:AES:RSA:HMACSHA512- ::: .envio certificado del servidor  ::: recibio y creo llave simetrica  ::: recibio confirmacion del cliente:OK- ::: .delegado 2: recibio cc y clave -  ::: envio valor 32568000 cifrado con llave simetrica al cliente.  ::: .Terminando exitosamente.OKrecibio-HOLA- ::: .recibio-ALGORITMOS:AES:RSA:HMACSHA512- ::: .envio certificado del servidor  ::: recibio y creo llave simetrica  ::: recibio confirmacion del cliente:OK- ::: .delegado 3: recibio cc y clave -  ::: envio valor 55035000 cifrado con llave simetrica al cliente.  ::: .Terminando exitosamente.OK
