@@ -1,18 +1,5 @@
 package secure.icsrv20192;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.lang.management.ManagementFactory;
-import java.net.Socket;
-import java.security.KeyPair;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.concurrent.Callable;
-
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import javax.management.Attribute;
@@ -20,6 +7,14 @@ import javax.management.AttributeList;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
 import javax.xml.bind.DatatypeConverter;
+import java.io.*;
+import java.lang.management.ManagementFactory;
+import java.net.Socket;
+import java.security.KeyPair;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.Callable;
 
 /**
  * Esta clase se encarga del protocolo
@@ -69,22 +64,22 @@ public class D implements Callable<ArrayList<Double>> {
 	}
 	
 	private boolean validoAlgHMAC(String nombre) {
-		return ((nombre.equals(S.HMACMD5) || 
+		return ((nombre.equals(S.HMACMD5) ||
 			 nombre.equals(S.HMACSHA1) ||
 			 nombre.equals(S.HMACSHA256) ||
 			 nombre.equals(S.HMACSHA384) ||
 			 nombre.equals(S.HMACSHA512)
 			 ));
 	}
-	
+
 	/*
-	 * Generacion del archivo log. 
-	 * Nota: 
-	 * - Debe conservar el metodo como está. 
+	 * Generacion del archivo log.
+	 * Nota:
+	 * - Debe conservar el metodo como está.
 	 * - Es el único metodo permitido para escribir en el log.
 	 */
 	private void escribirMensaje(String pCadena) {
-		
+
 		try {
 			FileWriter fw = new FileWriter(file,true);
 			fw.write(pCadena);
@@ -96,7 +91,7 @@ public class D implements Callable<ArrayList<Double>> {
 	}
 
 
-	
+
 	public static String toHexString(byte[] array) {
 	    return DatatypeConverter.printBase64Binary(array);
 	}
@@ -139,7 +134,7 @@ public class D implements Callable<ArrayList<Double>> {
 				throw new Exception(dlg + ERROR + REC + linea +"-terminando.");
 			} else {
 				ac.println(OK);
-				cadenas[0] = REC + linea + "- ::: .";
+				cadenas[0] =dlg +  REC + linea + "- ::: .";
 				System.out.print(cadenas[0]);
 			}
 
@@ -221,7 +216,7 @@ public class D implements Callable<ArrayList<Double>> {
 					toByteArray(linea), simetrica, algoritmos[1]);
 			String clave = toHexString(claveByte);
 			System.out.print("" + "recibio clave y descifro:-" + clave + "- ::: .");
-			cadenas[5] = dlg + "recibio cc y clave -  ::: ";
+			cadenas[5] = "recibio cc y clave -  ::: ";
 
 			Random rand = new Random();
 			int valor = rand.nextInt(1000000);
@@ -255,6 +250,7 @@ public class D implements Callable<ArrayList<Double>> {
 			for (int i=0;i<numCadenas;i++) {
 				escribirMensaje(cadenas[i]);
 			}
+			escribirMensaje("\n");
 		} catch (Exception e) {
 			lost=1;
 			e.printStackTrace();

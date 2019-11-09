@@ -20,11 +20,14 @@ public class ClientServerTask extends Task {
             Cliente cliente = new Cliente(writer, reader);
 
             cliente.start();
+
         }
         catch (Exception e)
         {
             e.printStackTrace();
+            fail();
         }
+        success();
     }
     @Override
     public void fail()

@@ -1,10 +1,6 @@
 package secure.icsrv20192;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.security.KeyPair;
@@ -50,16 +46,16 @@ public class P {
 		keyPairServidor = S.grsa();
 		certSer = S.gc(keyPairServidor);
 		String ruta = "./resultados.txt";
-   
+
         file = new File(ruta);
         if (!file.exists()) {
             file.createNewFile();
         }
         FileWriter fw = new FileWriter(file);
         fw.close();
-        
+
         D.init(certSer, keyPairServidor, file);
-        
+
 		// Crea el socket que escucha en el puerto seleccionado.
 		ss = new ServerSocket(ip);
 		System.out.println(MAESTRO + "Socket creado.");
@@ -69,7 +65,7 @@ public class P {
 
 
 		for (int i=0;true;i++) {
-			try { 
+			try {
 				Socket sc = ss.accept();
 				System.out.println(MAESTRO + "secure.cliente.Cliente " + i + " aceptado.");
 				D d = new D(sc,i);

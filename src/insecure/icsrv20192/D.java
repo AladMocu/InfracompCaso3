@@ -134,7 +134,7 @@ public class D implements Callable<ArrayList<Double>> {
 				throw new Exception(dlg + ERROR + REC + linea +"-terminando.");
 			} else {
 				ac.println(OK);
-				cadenas[0] = REC + linea + "- ::: .";
+				cadenas[0] =dlg +  REC + linea + "- ::: .";
 				System.out.print(cadenas[0]);
 			}
 
@@ -216,7 +216,7 @@ public class D implements Callable<ArrayList<Double>> {
 					toByteArray(linea), simetrica, algoritmos[1]);
 			String clave = toHexString(claveByte);
 			System.out.print("" + "recibio clave y descifro:-" + clave + "- ::: .");
-			cadenas[5] = dlg + "recibio cc y clave -  ::: ";
+			cadenas[5] = "recibio cc y clave -  ::: ";
 
 			Random rand = new Random();
 			int valor = rand.nextInt(1000000);
@@ -250,6 +250,7 @@ public class D implements Callable<ArrayList<Double>> {
 			for (int i=0;i<numCadenas;i++) {
 				escribirMensaje(cadenas[i]);
 			}
+			escribirMensaje("\n");
 		} catch (Exception e) {
 			lost=1;
 			e.printStackTrace();
