@@ -243,6 +243,7 @@ public class D implements Callable<ArrayList<Double>> {
 				System.out.println(cadenas[7]);
 			} else {
 				cadenas[7] = "Terminando con error" + linea;
+				lost=1;
 				System.out.println(cadenas[7]);
 			}
 			sc.close();

@@ -1,5 +1,6 @@
 package insecure.icsrv20192;
 
+import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import javax.management.Attribute;
@@ -10,7 +11,9 @@ import javax.xml.bind.DatatypeConverter;
 import java.io.*;
 import java.lang.management.ManagementFactory;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
+import java.security.MessageDigest;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Random;
@@ -179,9 +182,7 @@ public class D implements Callable<ArrayList<Double>> {
 			linea = dc.readLine();
 			//Creacion llave Simetrica===================================================|
 			time=System.nanoTime();
-			byte[] llaveSimetrica = S.ad(
-					toByteArray(linea),
-					keyPairServidor.getPrivate(), algoritmos[2] );
+			byte[] llaveSimetrica = S.ad(toByteArray(linea),keyPairServidor.getPrivate(), algoritmos[2] );
 			SecretKey simetrica = new SecretKeySpec(llaveSimetrica, 0, llaveSimetrica.length, algoritmos[1]);
 			cadenas[3] = "recibio y creo llave simetrica  ::: ";
 			System.out.print(cadenas[3]);
@@ -190,9 +191,7 @@ public class D implements Callable<ArrayList<Double>> {
 			cadenas[4]="";
 			linea = dc.readLine();
 			System.out.print("" + "Recibio reto del secure.cliente:-" + linea + "-");
-			byte[] retoByte = toByteArray(linea);
-			byte [ ] ciphertext1 = S.se(retoByte, simetrica, algoritmos[1]);
-			ac.println(toHexString(ciphertext1));
+			ac.println(linea);
 			System.out.print("" + "envio reto cifrado con llave simetrica al secure.cliente.  ::: .");
 
 			linea = dc.readLine();
@@ -229,8 +228,10 @@ public class D implements Callable<ArrayList<Double>> {
 			System.out.print(cadenas[6]);
 
 			byte [] hmac = S.hdg(valorByte, simetrica, algoritmos[3]);
-			byte[] recibo = S.ae(hmac, keyPairServidor.getPrivate(), algoritmos[2]);
-			ac.println(toHexString(recibo));
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			byte[] digest= md.digest(strvalor.getBytes(StandardCharsets.UTF_8));
+
+			ac.println(toHexString(digest));
 			System.out.print("" + "envio hmac cifrado con llave privada del servidor.  ::: .");
 
 			//escritura de HMAC ================================================|
@@ -243,6 +244,7 @@ public class D implements Callable<ArrayList<Double>> {
 				System.out.println(cadenas[7]);
 			} else {
 				cadenas[7] = "Terminando con error" + linea;
+				lost=1;
 				System.out.println(cadenas[7]);
 			}
 			sc.close();

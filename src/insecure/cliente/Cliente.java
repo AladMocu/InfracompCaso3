@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 import java.security.SecureRandom;
@@ -48,23 +50,13 @@ public class Cliente extends Thread{
     private String algoritmo;
 
     private X509Certificate certificado;
-
     private SecretKeySpec KS;
-    private Cipher cipherAES;
-    private Cipher cipherRSA;
+
 
 
     public Cliente(PrintWriter writer, BufferedReader reader)  {
         this.writer=writer;
         this.reader=reader;
-        try {
-             cipherAES = Cipher.getInstance("AES");
-             cipherRSA = Cipher.getInstance("RSA");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        }
         byte[] key = new byte[16];
         SecureRandom random = new SecureRandom();
         random.nextBytes(key);
@@ -96,18 +88,15 @@ public class Cliente extends Thread{
             InputStream in = new ByteArrayInputStream(certificate);
             certificado = (X509Certificate) CertificateFactory.getInstance("X.509").generateCertificate(in);
             KW = certificado.getPublicKey();
-            //cifrar llave publica del secure.cliente con la publica del servidor
-            cipherRSA.init(Cipher.ENCRYPT_MODE,KW);
-            byte[] encryptedData = cipherRSA.doFinal(KS.getEncoded());
-            writer.println(toHexString(encryptedData));
-            String reto= "JuliEsLindaYEstoEsUnReto";
+
+            String reto= "retoescritobienfacilalv";
             //enviando reto
+            writer.println(KW.getEncoded());
+            System.out.println(KW.getEncoded());
             writer.println(reto);
             //recibiendo reto cifrado
-            String recibido=reader.readLine();
-            cipherAES.init(Cipher.DECRYPT_MODE,KS);
-            String respuesta= toHexString(cipherAES.doFinal(toByteArray(recibido)));
-            System.out.println(respuesta);
+            String respuesta=reader.readLine();
+            System.out.println("respuesta al reto:" +respuesta);
             if(respuesta.equals(reto))
             {
                 writer.println(CORRECTO);
@@ -122,36 +111,33 @@ public class Cliente extends Thread{
             //envio de datos personales
             String cc= "1007273248";
             String password = "password";
-            cipherAES.init(Cipher.ENCRYPT_MODE,KS);
-            byte[] c_cc= cipherAES.doFinal(toByteArray(cc));
-            byte[] c_pw= cipherAES.doFinal(toByteArray(password));
-            writer.println(toHexString(c_cc));
-            writer.println(toHexString(c_pw));
+            writer.println(cc);
+            writer.println(password);
             //recibiendo valor y digest
-            String c_valor= reader.readLine();
-            cipherAES.init(Cipher.DECRYPT_MODE,KS);
-            String valor= toHexString(cipherAES.doFinal(toByteArray(c_valor)));
+            String valor= reader.readLine();
             System.out.println(valor);
 
 
             String c_digest=reader.readLine();
-            cipherRSA.init(Cipher.DECRYPT_MODE,KW);
-            byte[] c_digest2=  cipherRSA.doFinal(toByteArray(c_digest));
 
 
-            Mac mac = Mac.getInstance(ALGORITMOS[6]);
-            mac.init(KS);
-            byte[] digest= mac.doFinal(toByteArray(valor));
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
 
-            System.out.println(toHexString(c_digest2));
+
+            byte[] digest= md.digest(valor.getBytes(StandardCharsets.UTF_8));
+
+            System.out.println(c_digest);
             System.out.println(toHexString(digest));
-            if(Arrays.equals(c_digest2, digest))
+
+
+            if(Arrays.equals(toByteArray(c_digest), digest))
             {
                 writer.println(CORRECTO);
             }
             else
             {
                 writer.println(ERROR);
+
             }
 
 

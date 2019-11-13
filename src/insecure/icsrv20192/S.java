@@ -33,49 +33,31 @@ public class S {
 	public static final String HMACSHA384 = "HMACSHA384";
 	public static final String HMACSHA512 = "HMACSHA512";
 	
-	public static byte[] se (byte[] msg, Key key , String algo)
-			throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, 
+	public static byte[] se (byte[] msg, Key key , String algo){
+		return msg;
+	}
+	
+	public static byte[] sd (byte[] msg, Key key , String algo){
+		return msg;
+	}
+	
+	public static byte[] ae (byte[] msg, Key key , String algo)
+			throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException,
 			NoSuchAlgorithmException, NoSuchPaddingException {
-		algo = algo + 
-				(algo.equals(DES) || algo.equals(AES)?"/ECB/PKCS5Padding":"");
-		Cipher decifrador = Cipher.getInstance(algo); 
-		decifrador.init(Cipher.ENCRYPT_MODE, key); 
+		Cipher decifrador = Cipher.getInstance(algo);
+		decifrador.init(Cipher.ENCRYPT_MODE, key);
 		return decifrador.doFinal(msg);
 	}
 	
-	public static byte[] sd (byte[] msg, Key key , String algo)
-			throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, 
-			NoSuchAlgorithmException, NoSuchPaddingException {
-		algo = algo + 
-				(algo.equals(DES) || algo.equals(AES)?"/ECB/PKCS5Padding":"");
-		Cipher decifrador = Cipher.getInstance(algo); 
-		decifrador.init(Cipher.DECRYPT_MODE, key); 
-		return decifrador.doFinal(msg);
-	}
-	
-	public static byte[] ae (byte[] msg, Key key , String algo) 
-			throws IllegalBlockSizeException, BadPaddingException, InvalidKeyException, 
-			NoSuchAlgorithmException, NoSuchPaddingException {
-		Cipher decifrador = Cipher.getInstance(algo); 
-		decifrador.init(Cipher.ENCRYPT_MODE, key); 
-		return decifrador.doFinal(msg);
-	}
-	
-	public static byte[] ad (byte[] msg, Key key , String algo) 
-			throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, 
+	public static byte[] ad (byte[] msg, Key key , String algo)
+			throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException,
 			IllegalBlockSizeException, BadPaddingException {
-		Cipher decifrador = Cipher.getInstance(algo); 
-		decifrador.init(Cipher.DECRYPT_MODE, key); 
-		return decifrador.doFinal(msg);
+		return msg;
 	}
 
 	public static byte[] hdg (byte[] msg, Key key, String algo) throws NoSuchAlgorithmException,
 			InvalidKeyException, IllegalStateException, UnsupportedEncodingException {
-		Mac mac = Mac.getInstance(algo);
-		mac.init(key);
-
-		byte[] bytes = mac.doFinal(msg);
-		return bytes;
+		return msg;
 	}
 	
 	public static boolean vi(byte[] msg, Key key, String algo, byte [] hash ) throws Exception
