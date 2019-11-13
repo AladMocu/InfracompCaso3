@@ -1,5 +1,7 @@
 package insecure.icsrv20192;
 
+import dataManagement.statistics.StatisticsManagement;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -62,6 +64,7 @@ public class P {
 
 		ExecutorService executorService = Executors.newFixedThreadPool(poolsize);
 
+		StatisticsManagement manejador = new StatisticsManagement("Inseguro");
 
 
 		for (int i=0;true;i++) {
@@ -73,7 +76,7 @@ public class P {
 
                 //data representa un arreglo de valores relatimos a la ejecucion de la forma [tiempo,cpu,(0/1)falla]
                 ArrayList<Double> data=submit.get();
-
+				manejador.registerValue(data);
                 System.out.println(data.toString());
             } catch (IOException e) {
 				System.out.println(MAESTRO + "Error creando el socket secure.cliente.");
