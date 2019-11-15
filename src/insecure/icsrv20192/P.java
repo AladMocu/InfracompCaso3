@@ -47,7 +47,7 @@ public class P {
 		File file = null;
 		keyPairServidor = S.grsa();
 		certSer = S.gc(keyPairServidor);
-		String ruta = "./resultados.txt";
+		String ruta = "./resultadosInsecure.txt";
    
         file = new File(ruta);
         if (!file.exists()) {
