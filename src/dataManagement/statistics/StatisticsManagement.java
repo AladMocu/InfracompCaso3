@@ -30,7 +30,7 @@ public class StatisticsManagement {
             int numberOfTasks=Integer.parseInt(loadPrpoperties.getProperty("tasknumber"));
             int gapBetweenTasks=Integer.parseInt(loadPrpoperties.getProperty("taskgap"));
 
-            file= new File("./docs/punto3/"+kind+"-"+poolsize+"T-"+numberOfTasks+"X-"+gapBetweenTasks+"ms.csv");
+            file= new File("./docs/punto4/"+kind+"-"+poolsize+"T-"+numberOfTasks+"X-"+gapBetweenTasks+"ms.csv");
 
 
         }
