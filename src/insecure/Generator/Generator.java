@@ -9,8 +9,12 @@ import java.util.Properties;
 public class Generator {
     private LoadGenerator generator;
 
+    public static Integer failures;
+
+
     public Generator()
     {
+        failures=0;
         try {
 
             FileReader reader=new FileReader("./docs/load.properties");
@@ -22,10 +26,14 @@ public class Generator {
             int gapBetweenTasks=Integer.parseInt(loadPrpoperties.getProperty("taskgap"));
             generator= new LoadGenerator("Client - Server Load Test",numberOfTasks,work,gapBetweenTasks);
             generator.generate();
+
+
+
         }catch (Exception e)
         {
             e.printStackTrace();
         }
+
     }
     private Task createTask()
     {
@@ -33,7 +41,7 @@ public class Generator {
     }
     public static void main(String... args)
     {
-        @SuppressWarnings("unused")
+
         Generator gen= new Generator();
     }
 }

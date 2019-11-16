@@ -7,6 +7,9 @@ import java.io.*;
 import java.net.Socket;
 
 public class ClientServerTask extends Task {
+
+
+
     @Override
     public void execute()
     {
@@ -26,13 +29,19 @@ public class ClientServerTask extends Task {
         {
             e.printStackTrace();
             fail();
+            return;
         }
+
         success();
     }
     @Override
     public void fail()
     {
-        System.err.println("Failure!");
+        synchronized (Generator.failures)
+        {
+            Generator.failures+=1;
+            System.err.println("Failure!: "+ Generator.failures);
+        }
     }
 
     @Override

@@ -57,7 +57,7 @@ public class StatisticsManagement {
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter out = new PrintWriter(bw);
-            out.println(time+";"+cpu+";"+lost);
+            out.println(time+";"+cpu);
             out.close();
             bw.close();
             fw.close();
