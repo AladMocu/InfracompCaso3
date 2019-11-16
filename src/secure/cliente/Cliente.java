@@ -78,14 +78,13 @@ public class Cliente extends Thread{
             writer.println("HOLA");
             //se espera un 'OK' 
             String confirmacion=reader.readLine();
-            System.out.println(confirmacion);
             //se envian los algoritmos conocidos
             String parametros=STRALGORITMOS+":"+ALGORITMOS[0]+":"+ALGORITMOS[2]+":"+ALGORITMOS[6];
             writer.println(parametros);
-            System.out.println(parametros);
+
             //se espera un ok
             confirmacion=reader.readLine();
-            System.out.println(confirmacion);
+
             if(confirmacion.equals(ERROR))
             {
                 return;
@@ -107,11 +106,11 @@ public class Cliente extends Thread{
             String recibido=reader.readLine();
             cipherAES.init(Cipher.DECRYPT_MODE,KS);
             String respuesta= toHexString(cipherAES.doFinal(toByteArray(recibido)));
-            System.out.println(respuesta);
+
             if(respuesta.equals(reto))
             {
                 writer.println(CORRECTO);
-                System.out.println(CORRECTO);
+
 
             }
             else
@@ -131,7 +130,7 @@ public class Cliente extends Thread{
             String c_valor= reader.readLine();
             cipherAES.init(Cipher.DECRYPT_MODE,KS);
             String valor= toHexString(cipherAES.doFinal(toByteArray(c_valor)));
-            System.out.println(valor);
+
 
 
             String c_digest=reader.readLine();
@@ -143,8 +142,8 @@ public class Cliente extends Thread{
             mac.init(KS);
             byte[] digest= mac.doFinal(toByteArray(valor));
 
-            System.out.println(toHexString(c_digest2));
-            System.out.println(toHexString(digest));
+
+
             if(Arrays.equals(c_digest2, digest))
             {
                 writer.println(CORRECTO);

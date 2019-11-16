@@ -1,8 +1,11 @@
 package dataManagement.statistics;
 
 
+import uniandes.gload.core.Task;
+
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class StatisticsManagement {
     private ArrayList<Double> times;
@@ -12,13 +15,22 @@ public class StatisticsManagement {
     private File file;
 
 
-    public StatisticsManagement(String kind){
+    public StatisticsManagement(String kind,int poolsize){
         try{
             this.kind=kind;
             times= new ArrayList<>();
             cpus= new ArrayList<>();
             failures=0;
-            file= new File("./docs/"+kind+".csv");
+
+            FileReader reader=new FileReader("./docs/load.properties");
+            Properties loadPrpoperties= new Properties();
+
+            loadPrpoperties.load(reader);
+
+            int numberOfTasks=Integer.parseInt(loadPrpoperties.getProperty("tasknumber"));
+            int gapBetweenTasks=Integer.parseInt(loadPrpoperties.getProperty("taskgap"));
+
+            file= new File("./docs/punto3/"+kind+"-"+poolsize+"T-"+numberOfTasks+"X-"+gapBetweenTasks+"ms.csv");
 
 
         }
@@ -26,7 +38,6 @@ public class StatisticsManagement {
         {
             e.printStackTrace();
         }
-
     }
 
     public void registerValue(ArrayList<Double> values)

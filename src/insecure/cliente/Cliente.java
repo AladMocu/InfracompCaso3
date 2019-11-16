@@ -70,14 +70,14 @@ public class Cliente extends Thread{
             writer.println("HOLA");
             //se espera un 'OK' 
             String confirmacion=reader.readLine();
-            System.out.println(confirmacion);
+
             //se envian los algoritmos conocidos
             String parametros=STRALGORITMOS+":"+ALGORITMOS[0]+":"+ALGORITMOS[2]+":"+ALGORITMOS[6];
             writer.println(parametros);
-            System.out.println(parametros);
+
             //se espera un ok
             confirmacion=reader.readLine();
-            System.out.println(confirmacion);
+
             if(confirmacion.equals(ERROR))
             {
                 return;
@@ -92,15 +92,15 @@ public class Cliente extends Thread{
             String reto= "retoescritobienfacilalv";
             //enviando reto
             writer.println(KW.getEncoded());
-            System.out.println(KW.getEncoded());
+
             writer.println(reto);
             //recibiendo reto cifrado
             String respuesta=reader.readLine();
-            System.out.println("respuesta al reto:" +respuesta);
+
             if(respuesta.equals(reto))
             {
                 writer.println(CORRECTO);
-                System.out.println(CORRECTO);
+
 
             }
             else
@@ -115,7 +115,7 @@ public class Cliente extends Thread{
             writer.println(password);
             //recibiendo valor y digest
             String valor= reader.readLine();
-            System.out.println(valor);
+
 
 
             String c_digest=reader.readLine();
@@ -126,8 +126,8 @@ public class Cliente extends Thread{
 
             byte[] digest= md.digest(valor.getBytes(StandardCharsets.UTF_8));
 
-            System.out.println(c_digest);
-            System.out.println(toHexString(digest));
+
+
 
 
             if(Arrays.equals(toByteArray(c_digest), digest))

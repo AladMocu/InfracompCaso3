@@ -65,7 +65,7 @@ public class P {
 		ExecutorService executorService = Executors.newFixedThreadPool(poolsize);
 
 
-		StatisticsManagement manejador= new StatisticsManagement("Seguro");
+		StatisticsManagement manejador= new StatisticsManagement("Seguro",poolsize);
 
 		for (int i=0;true;i++) {
 			try {

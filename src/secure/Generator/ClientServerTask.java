@@ -32,12 +32,12 @@ public class ClientServerTask extends Task {
     @Override
     public void fail()
     {
-        System.out.println(Task.MENSAJE_FAIL);
+        System.err.println("Failure!");
     }
 
     @Override
     public void success()
     {
-        System.out.println(Task.OK_MESSAGE);
+        System.out.println("Success!");
     }
 }
